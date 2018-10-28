@@ -1,0 +1,19 @@
+server:
+   port: 8080
+
+#配置数据源
+spring:
+   datasource:
+         type: com.alibaba.druid.pool.DruidDataSource
+         driver-class-name: com.mysql.jdbc.Driver
+         url: jdbc:mysql://56c1f4575346c.gz.cdb.myqcloud.com:12818/scheduling
+         username: cdb_outerroot
+         password: hongan666
+         
+         
+logging:
+   level:
+      com.learnhow.springboot.mybatis.dao: debug
+
+# mybatis-plus:
+#   config-location: classpath:mapper/*.xml 
