@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>first html page</title>    
+</head>
+<body>
+
+<h3>张海鹰</h3>
+<input type="text" value="2018-11-1"  />
+<input type="text" value="2018-11-30"  />
+<button onclick="javascript:doschedule();">排班</button>
+<p th:text="${userid}">dddd</p>
+
+<script language="javascript"  src="/js/jquery-1.11.1.js" type="text/javascript"></script>
+<script language="javascript" type="text/javascript">
+    
+        function doschedule(){
+            //alert(666);
+            // alert($("#hidUserId").val());
+            var userId = 1;
+            $.get("http://localhost:8080/schedule/save/"+userId+"", function(result){
+                alert(result);
+            })
+        }
+        
+</script>
+
+</body>
+
+</html>

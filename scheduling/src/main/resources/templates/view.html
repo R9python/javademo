@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>first html page</title>
+</head>
+<body>
+<h1>张海鹰</h1>
+<ul id="ulResult">
+    <!-- <li>张海鹰 2018-11-1 上班</li>
+    <li>张海鹰 2018-11-2 上班</li>
+    <li>张海鹰 2018-11-3 休息</li>
+    <li>张海鹰 2018-11-4 休息</li> -->
+</ul>
+
+<script language="javascript"  src="/js/jquery-1.11.1.js" type="text/javascript"></script>
+<script language="javascript" type="text/javascript">
+    
+        $(function(){
+            view();
+        });
+
+        function view(){
+            var userId = 1;
+            $.get("http://localhost:8080/schedule/view/"+userId+"", function(result){
+                //alert(result);
+                if(result==""){
+                    $("#ulResult").html("无记录.")
+                }
+                else{
+                    $("#ulResult").html("<li>"+result.workDate+"</li>")
+                }
+                
+            })
+        }
+        
+</script>
+</body>
+</html>

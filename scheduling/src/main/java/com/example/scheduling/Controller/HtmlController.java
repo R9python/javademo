@@ -2,6 +2,8 @@ package com.example.scheduling.Controller;
 
 import java.util.HashMap;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -17,5 +19,16 @@ public class HtmlController {
     public String helloHtml(HashMap<String, Object> map) {
         map.put("desc", "前端HTML页面");
         return "/index";
+    }
+
+    @RequestMapping("/scheduling/view")
+    public String schedulingUser(HashMap<String, Object> map) {
+        return "/view";
+    }
+
+    @RequestMapping(value="/scheduling/do/{userid}")
+    public String doSchedule(@PathParam("userid")Long userid,HashMap<String, Object> map) {
+        map.put("userid", userid);
+        return "/doschedule";
     }
 }

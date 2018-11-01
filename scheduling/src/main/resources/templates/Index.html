@@ -3,9 +3,17 @@
 <head>
     <meta charset="UTF-8"/>
     <title>first html page</title>
+    <script src="/src/main/resources/js/jquery.js"></script>
 </head>
 <body>
-<h1>我来排班222</h1>
-<p th:text="${desc}"></p>
+<h1>我来排班</h1>
+
+<ul>
+    <li><span>张海鹰</span> | <span><a href="http://localhost:8080/scheduling/view">查看排班</a></span> | <span><a href="http://localhost:8080/scheduling/do/1">去排班</a></span></li>
+    <li><span>梁飞华</span> | <span><a href="http://localhost:8080/scheduling/view">查看排班</a></span> | <span><a href="http://localhost:8080/scheduling/do/2">去排班</a></span></li>
+</ul>
 </body>
 </html>
+<script>
+    // $.get("http://localhost:8080/")
+</script>
