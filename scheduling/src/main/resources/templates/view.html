@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <title>first html page</title>
+    <title>个人排班信息</title>
 </head>
 <body>
 <h1>张海鹰</h1>
@@ -23,12 +23,16 @@
         function view(){
             var userId = 1;
             $.get("http://localhost:8080/schedule/view/"+userId+"", function(result){
-                //alert(result);
-                if(result==""){
+                // alert("result = " + result.length);
+                if(result.length == 0){
                     $("#ulResult").html("无记录.")
                 }
                 else{
-                    $("#ulResult").html("<li>"+result.workDate+"</li>")
+                    var strText = "";
+                    result.forEach(element => {
+                        strText += "<li>"+element.workDate+" | "+(element.isRest == 0 ? '上班' : '休息')+" </li>"
+                    });
+                    $("#ulResult").html(strText)
                 }
                 
             })

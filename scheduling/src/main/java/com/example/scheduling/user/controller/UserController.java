@@ -1,6 +1,6 @@
 package com.example.scheduling.user.controller;
 
-
+import java.util.List;
 import com.example.scheduling.user.entity.User;
 import com.example.scheduling.user.mapper.UserMapper;
 
@@ -27,5 +27,11 @@ public class UserController {
     public User GetUser() {
         User data = mapper.selectById(1);
         return data;
+    }
+
+    @RequestMapping("/user/list")
+    public List<User> GetUserList() {
+        List<User> userList = mapper.selectList(null);
+        return userList;
     }
 }

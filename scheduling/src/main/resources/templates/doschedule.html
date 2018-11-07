@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>first html page</title>    
+    <title>新增排班</title>    
 </head>
 <body>
 
@@ -19,7 +19,7 @@
             // alert($("#hidUserId").val());
             var userId = 1;
             $.get("http://localhost:8080/schedule/save/"+userId+"", function(result){
-                alert(result);
+                alert("已完成排班!");
             })
         }
         

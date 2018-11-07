@@ -1,7 +1,7 @@
 package com.example.scheduling.schedule.controller;
 
 
-import java.awt.List;
+import java.util.List;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,12 +33,13 @@ public class ScheduleController {
     @Autowired 
     ScheduleMapper mapper;
 
+    // 保存排班记录
     @RequestMapping(value="/schedule/save/{userid}", method=RequestMethod.GET)
     public boolean ScheduleSave(@PathVariable long userid){
         Schedule schedule = new Schedule();
         LocalDate today = LocalDate.now();
         schedule.setUserId(userid);
-        schedule.setIsRest(1);
+        schedule.setIsRest(0);
         schedule.setWorkDate(today);
         // entity.setUserId(1);
         mapper.insert(schedule);
@@ -46,14 +47,16 @@ public class ScheduleController {
         return true;
     }
 
+    // 查看排班记录
     @RequestMapping(value="/schedule/view/{userid}", method=RequestMethod.GET)
-    public Schedule ScheduleView(){
-        // List<String> listNames = Arrays.asList("John", "Peter", "Tom", "Mary", "David", "Sam");
-        // List<String> list = List.of("one", "two", "three");
-        // QueryWrapper qw = new QueryWrapper();
-        // Wrapper<Schedule> queryWrapper = new Wrapper<Schedule>();        
-        // Schedule sch = mapper.selectList(queryWrapper);
-        Schedule sch = mapper.selectById(4);
-        return sch;
+    public List<Schedule> ScheduleView(){
+        QueryWrapper queryWrapper = new QueryWrapper<Schedule>();
+        // queryWrapper.select(i -> i.getProperty().startsWith("test"));
+        // queryWrapper.setEntity(new Schedule());
+        // queryWrapper
+        List<Schedule> scheduleList = mapper.selectList(queryWrapper);
+        // Schedule sch = mapper.selectById(4);
+
+        return scheduleList;
     }
 }

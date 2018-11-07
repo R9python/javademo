@@ -2,18 +2,33 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <title>first html page</title>
-    <script src="/src/main/resources/js/jquery.js"></script>
+    <title>员工列表</title>
 </head>
 <body>
 <h1>我来排班</h1>
 
-<ul>
-    <li><span>张海鹰</span> | <span><a href="http://localhost:8080/scheduling/view">查看排班</a></span> | <span><a href="http://localhost:8080/scheduling/do/1">去排班</a></span></li>
-    <li><span>梁飞华</span> | <span><a href="http://localhost:8080/scheduling/view">查看排班</a></span> | <span><a href="http://localhost:8080/scheduling/do/2">去排班</a></span></li>
+<ul id="ulResult">
 </ul>
 </body>
 </html>
-<script>
-    // $.get("http://localhost:8080/")
+<script language="javascript"  src="/js/jquery-1.11.1.js" type="text/javascript"></script>
+<script language="javascript" type="text/javascript">
+    $(function(){
+        userList();
+    });
+
+    function userList(){
+        $.get("http://localhost:8080/user/list", function(result){
+            if(result.length == 0){
+                alert("无记录.")
+            }
+            else{
+                var strText = "";
+                result.forEach(element => {
+                    strText += "<li><span>"+ element.name +"</span> | <span><a href='http://localhost:8080/scheduling/view'>查看排班</a></span> | <span><a href='http://localhost:8080/scheduling/do/1'>去排班</a></span></li>";
+                });
+                $("#ulResult").html(strText)
+            }
+        })
+    }
 </script>
